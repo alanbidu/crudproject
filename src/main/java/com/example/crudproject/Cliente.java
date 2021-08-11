@@ -34,6 +34,8 @@ public class Cliente implements Serializable {
 
 //	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+	public Cliente(){}
+	
 	public Long getId() {
 		return id;
 	}

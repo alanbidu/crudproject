@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import com.example.crudproject.Cliente;
 
 @Stateless
-public class MessageService {
+public class OperacaoBDCliente {
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -27,9 +27,9 @@ public class MessageService {
 		Cliente cliente = new Cliente();
 		cliente.setId(id);
 		entityManager.remove(entityManager.merge(cliente));
-
-		System.out.println("delete de MessageService");
 		
+		System.out.println("Saindo delete de OperacaoBDCliente");
+
 		return "crud.xhtml?faces-redirect=true";
 	}
 }

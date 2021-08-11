@@ -46,57 +46,62 @@
 
 		<br />
 
-		<h:commandButton value="Enviar" action="#{bean.add}">
-			<f:ajax execute="@form" render=":table" />
+		<h:commandButton value="Enviar" action="#{bean.adicionar()}">
+			<!-- 			<f:ajax execute="@form" -->
+			<!-- 				render="nome data valor sexo estadoCivil :table" /> -->
 		</h:commandButton>
 	</h:form>
 
 	<br />
+	<h:form>
+		<h:dataTable id="table" value="#{bean.clientes}" var="cliente">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{cliente.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{cliente.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Data</f:facet>
+				<h:outputText value="#{cliente.data}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Valor</f:facet>
+				<h:outputText value="#{cliente.valor}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Sexo</f:facet>
+				<h:outputText value="#{cliente.sexo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Estado Civil</f:facet>
+				<h:outputText value="#{cliente.estadoCivil}" />
+			</h:column>
 
-	<h:dataTable id="table" value="#{bean.clientes}" var="cliente">
-		<h:column>
-			<f:facet name="header">Id</f:facet>
-			<h:outputText value="#{cliente.id}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">Nome</f:facet>
-			<h:outputText value="#{cliente.nome}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">Data</f:facet>
-			<h:outputText value="#{cliente.data}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">Valor</f:facet>
-			<h:outputText value="#{cliente.valor}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">Sexo</f:facet>
-			<h:outputText value="#{cliente.sexo}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">Estado Civil</f:facet>
-			<h:outputText value="#{cliente.estadoCivil}" />
-		</h:column>
 
+			<!-- 		<h:column>#{cliente.estadoCivil}</h:column> -->
+<!-- 			<h:column> -->
+<!-- 				<h:button value="Atualizar" outcome="#{bean.updatePage(cliente.id)}" -->
+<!-- 					style="color: blue" /> -->
+<!-- 			</h:column> -->
 
-		<!-- 		<h:column>#{cliente.estadoCivil}</h:column> -->
+			<h:column>
 
-		<h:column>
-
-<!-- 			<h:button value="Atualizar" outcome="#{bean.updatePage(cliente.id)}" /> -->
-			<!-- 			<h:commandButton value="Atualizar" -->
-			<!-- 				action="#{bean.update(cliente.id)}"> -->
-			<!-- 				<h:link outcome="update" /> -->
-			<!-- 			</h:commandButton> -->
-		</h:column>
-		<h:column>
-<!-- 			<h:commandButton value="Excluir" -->
-<!-- 				action="update.xhtml?faces-redirect=true"> -->
-<!-- 			</h:commandButton> -->
-<!-- 			<h:button value="Excluir" outcome="#{bean.delete(cliente.id)}" /> -->
-		</h:column>
-	</h:dataTable>
+				<h:commandButton value="Atualizar"
+					action="updatecrud?faces-redirect=true" style="color: blue">
+					<!-- 					<h:link outcome="updatecrud.xhtml?faces-redirect=true" /> -->
+				</h:commandButton>
+			</h:column>
+			<h:column>
+				<h:commandButton value="Excluir" action="#{bean.delete(cliente.id)}"
+					style="color: red" onclick="alert('Botão Exlcuir pressionado!!')">
+				</h:commandButton>
+				<!-- 			<h:button value="Excluir" outcome="#{bean.delete(cliente.id)}" style="color: red"/> -->
+			</h:column>
+		</h:dataTable>
+	</h:form>
 
 </h:body>
 </html>
