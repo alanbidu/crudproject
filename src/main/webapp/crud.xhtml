@@ -9,11 +9,6 @@
 	<h1>CRUD</h1>
 	<h:form>
 
-		<!-- 		<h:outputLabel for="id" value="Id:" /> -->
-		<!-- 		<h:inputText id="id" value="#{bean.cliente.id}" /> -->
-
-		<!-- 		<br /> -->
-
 		<h:outputLabel for="nome" value="Nome:" />
 		<h:inputText id="nome" value="#{bean.cliente.nome}" />
 
@@ -47,8 +42,6 @@
 		<br />
 
 		<h:commandButton value="Enviar" action="#{bean.adicionar()}">
-			<!-- 			<f:ajax execute="@form" -->
-			<!-- 				render="nome data valor sexo estadoCivil :table" /> -->
 		</h:commandButton>
 	</h:form>
 
@@ -80,25 +73,17 @@
 				<h:outputText value="#{cliente.estadoCivil}" />
 			</h:column>
 
-
-			<!-- 		<h:column>#{cliente.estadoCivil}</h:column> -->
-<!-- 			<h:column> -->
-<!-- 				<h:button value="Atualizar" outcome="#{bean.updatePage(cliente.id)}" -->
-<!-- 					style="color: blue" /> -->
-<!-- 			</h:column> -->
-
 			<h:column>
 
 				<h:commandButton value="Atualizar"
-					action="updatecrud?faces-redirect=true" style="color: blue">
-					<!-- 					<h:link outcome="updatecrud.xhtml?faces-redirect=true" /> -->
+					action="#{bean.updatePage(cliente)}"
+					style="color: blue">
 				</h:commandButton>
 			</h:column>
 			<h:column>
 				<h:commandButton value="Excluir" action="#{bean.delete(cliente.id)}"
-					style="color: red" onclick="alert('Botão Exlcuir pressionado!!')">
+					style="color: red" >
 				</h:commandButton>
-				<!-- 			<h:button value="Excluir" outcome="#{bean.delete(cliente.id)}" style="color: red"/> -->
 			</h:column>
 		</h:dataTable>
 	</h:form>

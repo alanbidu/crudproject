@@ -20,7 +20,7 @@ public class Bean {
 
 	@Inject
 	private OperacaoBDCliente operacaoBDCliente;
-	
+
 	@PostConstruct
 	public void init() {
 		clientes = operacaoBDCliente.list();
@@ -30,24 +30,27 @@ public class Bean {
 		operacaoBDCliente.create(cliente);
 		clientes.add(cliente);
 		cliente = new Cliente();
-		System.out.println("Saindo de adicionar ");
-		return "crud.xhtml?faces-redirect=true";
+		return "crud.xhtml";
 	}
 
-	public String updatePage(Long id) {
-		System.out.println("Entrando no updatePage");
-		return "updatecrud.xhtml?faces-redirect=true";
+	public String updatePage(Cliente cliente) {
+		this.cliente = cliente;
+		return "updatecrud.xhtml";
 	}
 
-	public String update(Long id) {
-		return "updatecrud.xhtml?faces-redirect=true";
+	public String update(Cliente cliente) {
+
+		String crudPag = operacaoBDCliente.update(cliente);
+		cliente = new Cliente();
+		return crudPag;
+//		return "updatecrud.xhtml?faces-redirect=true";
 	}
 
 	public String delete(Long id) {
 		System.out.println("delete de Bean id = " + id);
 
-//		return operacaoBDCliente.delete(id);
-		return "crud.xhtml?faces-redirect=true";
+		return operacaoBDCliente.delete(id);
+//		return "crud.xhtml";
 	}
 
 	public Cliente getCliente() {
@@ -55,7 +58,6 @@ public class Bean {
 	}
 
 	public List<Cliente> getClientes() {
-		System.out.println("Entrando getClientes");
 		return clientes;
 	}
 
