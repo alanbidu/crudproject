@@ -2,12 +2,13 @@ package com.example.crudproject.service;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.example.crudproject.Cliente;
 
-@Statefull
+@Stateless
 public class OperacaoBDCliente {
 
 	@PersistenceContext
@@ -30,11 +31,9 @@ public class OperacaoBDCliente {
 		return "crud.xhtml?faces-redirect=true";
 	}
 	
-	public String update(Cliente cliente, Long id) {
+	public String update(Cliente cliente) {
 		
-		System.out.println("id DBCliente : " + id);
-		
-		Cliente clienteUpdate = entityManager.find(Cliente.class, id);
+		Cliente clienteUpdate = entityManager.find(Cliente.class, cliente.getId());
 //		clienteUpdate.setId(cliente.getId());
 		clienteUpdate.setNome(cliente.getNome());
 		clienteUpdate.setData(cliente.getData());
