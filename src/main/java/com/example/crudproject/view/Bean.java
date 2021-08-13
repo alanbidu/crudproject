@@ -1,5 +1,6 @@
 package com.example.crudproject.view;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -12,11 +13,13 @@ import com.example.crudproject.service.OperacaoBDCliente;
 
 @Named
 @RequestScoped
-public class Bean {
+public class Bean implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private Cliente cliente = new Cliente();
-
 	private List<Cliente> clientes;
+	
+	private Long idCliente;
 
 	@Inject
 	private OperacaoBDCliente operacaoBDCliente;
@@ -35,22 +38,22 @@ public class Bean {
 
 	public String updatePage(Cliente cliente) {
 		this.cliente = cliente;
+		idCliente = this.cliente.getId();
+		
+		System.out.println("idCliente Bean.updatePage = " + idCliente);
+		
 		return "updatecrud.xhtml";
 	}
 
-	public String update(Cliente cliente) {
-
-		String crudPag = operacaoBDCliente.update(cliente);
+	public String update() {
+		System.out.println("idCliente Bean.update = " + idCliente);
+		String crudPag = operacaoBDCliente.update(this.cliente, idCliente);
 		cliente = new Cliente();
 		return crudPag;
-//		return "updatecrud.xhtml?faces-redirect=true";
 	}
 
 	public String delete(Long id) {
-		System.out.println("delete de Bean id = " + id);
-
 		return operacaoBDCliente.delete(id);
-//		return "crud.xhtml";
 	}
 
 	public Cliente getCliente() {

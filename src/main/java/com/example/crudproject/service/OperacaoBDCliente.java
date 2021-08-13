@@ -2,14 +2,12 @@ package com.example.crudproject.service;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import com.example.crudproject.Cliente;
 
-@Stateless
+@Statefull
 public class OperacaoBDCliente {
 
 	@PersistenceContext
@@ -32,26 +30,19 @@ public class OperacaoBDCliente {
 		return "crud.xhtml?faces-redirect=true";
 	}
 	
-	public String update(Cliente cliente) {
-		Query queryObj = entityManager.createQuery("UPDATE Cliente c SET c.nome=:name,"
-				+ " c.data=:data, c.valor=:valor, c.sexo=:sexo, c.estadoCivil=:estadoCivil"
-				+ " WHERE c.id = :id");
-		queryObj.setParameter("id", cliente.getId());
-		queryObj.setParameter("name", cliente.getNome());
-		queryObj.setParameter("data", cliente.getData());
-		queryObj.setParameter("valor", cliente.getValor());
-		queryObj.setParameter("sexo", cliente.getSexo());
-		queryObj.setParameter("estadoCivil", cliente.getEstadoCivil());
-		int isAtuaizou =  queryObj.executeUpdate();
-		System.out.println("Atualizou? " + isAtuaizou);
-		showTables();
-		return "crud.xhtml?faces-redirect=true";
-	}
-	
-	private void showTables() {
-		Query queryObj = entityManager.createQuery("SELECT FIELD FROM (SHOW COLUMNS FROM Cliente)");
-		List<String> tabelas = (List<String>) queryObj.getResultList();
-		tabelas.forEach(System.out::println);
+	public String update(Cliente cliente, Long id) {
+		
+		System.out.println("id DBCliente : " + id);
+		
+		Cliente clienteUpdate = entityManager.find(Cliente.class, id);
+//		clienteUpdate.setId(cliente.getId());
+		clienteUpdate.setNome(cliente.getNome());
+		clienteUpdate.setData(cliente.getData());
+		clienteUpdate.setValor(cliente.getValor());
+		clienteUpdate.setSexo(cliente.getSexo());
+		clienteUpdate.setEstadoCivil(cliente.getEstadoCivil());
+		
+		return "crud.xhtml";
 	}
 	
 }
