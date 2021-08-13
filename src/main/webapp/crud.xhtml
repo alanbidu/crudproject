@@ -42,6 +42,7 @@
 		<br />
 
 		<h:commandButton value="Enviar" action="#{bean.adicionar()}">
+<!-- 			<f:ajax execute="@form" render="nome data valor sexo estadoCivil :table" /> -->
 		</h:commandButton>
 	</h:form>
 
@@ -76,13 +77,14 @@
 			<h:column>
 
 				<h:commandButton value="Atualizar"
-					action="#{bean.updatePage(cliente)}"
+					action="#{bean.updatePage(cliente)}" 
 					style="color: blue">
 				</h:commandButton>
 			</h:column>
 			<h:column>
 				<h:commandButton value="Excluir" action="#{bean.delete(cliente.id)}"
-					style="color: red" >
+					actionListener="#{bean.atualizarClientes()}"
+					style="color: red">
 				</h:commandButton>
 			</h:column>
 		</h:dataTable>

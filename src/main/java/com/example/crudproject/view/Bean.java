@@ -13,12 +13,12 @@ import com.example.crudproject.service.OperacaoBDCliente;
 
 @Named
 @SessionScoped
-public class Bean implements Serializable{
+public class Bean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Cliente cliente = new Cliente();
 	private List<Cliente> clientes;
-	
+
 	@Inject
 	private OperacaoBDCliente operacaoBDCliente;
 
@@ -35,9 +35,16 @@ public class Bean implements Serializable{
 		return "crud.xhtml";
 	}
 
+	public void atualizarClientes() {
+		clientes = operacaoBDCliente.list();
+//		for (int i = 0; i < clientes.size(); i++) {
+//			System.out.println(clientes.get(i).getNome());
+//		}
+	}
+
 	public String updatePage(Cliente cliente) {
 		this.cliente = cliente;
-		
+
 		return "updatecrud.xhtml";
 	}
 
@@ -48,7 +55,9 @@ public class Bean implements Serializable{
 	}
 
 	public String delete(Long id) {
-		return operacaoBDCliente.delete(id);
+		String crudDel = operacaoBDCliente.delete(id);;
+		clientes = operacaoBDCliente.list();
+		return crudDel;
 	}
 
 	public Cliente getCliente() {
