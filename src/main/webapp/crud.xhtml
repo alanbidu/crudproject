@@ -8,47 +8,65 @@
 </h:head>
 <h:body>
 	<h1>CRUD</h1>
+
+	<p:messages id="msg">
+		<p:autoUpdate />
+	</p:messages>
+
 	<h:form id="formulario">
 
-		<p:outputLabel for="nome" value="Nome:" />
-		<p:inputText id="nome" value="#{bean.cliente.nome}" />
+		<p:panel header="Cadastro de clientes">
 
-		<br />
+			<p:outputLabel for="nome" value="Nome:" />
+			<p:inputText id="nome" value="#{bean.cliente.nome}" required="true"
+				requiredMessage="Nome obrigatório" placeholder="Insira o nome aqui"
+				title="Nome do cliente" />
 
-		<p:outputLabel for="data" value="Data(DD/MM/AAAA):" />
-		<p:inputText id="data" value="#{bean.cliente.data}" />
+			<br />
 
-		<br />
+			<p:outputLabel for="data" value="Data(DD/MM/AAAA):" />
+			<p:inputText id="data" value="#{bean.cliente.data}" required="true"
+				requiredMessage="Data obrigatória" title="Data do cadastro" />
 
-		<p:outputLabel for="valor" value="Valor:" />
-		<p:inputText id="valor" value="#{bean.cliente.valor}" />
+			<br />
 
-		<br />
+			<p:outputLabel for="valor" value="Valor:" />
+			<p:inputText id="valor" value="#{bean.cliente.valor}" required="true"
+				requiredMessage="Valor obrigatório"
+				placeholder="Insira o valor aqui" title="Valor" />
 
-		<p:outputLabel for="sexo" value="Sexo:" />
-		<p:selectOneRadio id="sexo" value="#{bean.cliente.sexo}">
-			<f:selectItem itemValue="MASCULINO" itemLabel="MASCULINO" />
-			<f:selectItem itemValue="FEMININO" itemLabel="FEMININO" />
-		</p:selectOneRadio>
+			<br />
+
+			<p:outputLabel for="sexo" value="Sexo:" />
+			<p:selectOneRadio id="sexo" value="#{bean.cliente.sexo}"
+				required="true" requiredMessage="Sexo obrigatório">
+				<f:selectItem itemValue="MASCULINO" itemLabel="MASCULINO" />
+				<f:selectItem itemValue="FEMININO" itemLabel="FEMININO" />
+			</p:selectOneRadio>
 
 
-		<p:outputLabel for="estadoCivil" value="Estado Civil:" />
-		<p:selectOneRadio id="estadoCivil" value="#{bean.cliente.estadoCivil}">
-			<f:selectItem itemValue="SOLTEIRO(A)" itemLabel="SOLTEIRO(A)" />
-			<f:selectItem itemValue="CASADO(A)" itemLabel="CASADO(A)" />
-			<f:selectItem itemValue="VIÚVO(A)" itemLabel="VIÚVO(A)" />
-			<f:selectItem itemValue="SEPARADO(A)" itemLabel="SEPARADO(A)" />
-		</p:selectOneRadio>
+			<p:outputLabel for="estadoCivil" value="Estado Civil:" />
+			<p:selectOneRadio id="estadoCivil"
+				value="#{bean.cliente.estadoCivil}" required="true"
+				requiredMessage="Estado civil obrigatório">
+				<f:selectItem itemValue="SOLTEIRO(A)" itemLabel="SOLTEIRO(A)" />
+				<f:selectItem itemValue="CASADO(A)" itemLabel="CASADO(A)" />
+				<f:selectItem itemValue="VIÚVO(A)" itemLabel="VIÚVO(A)" />
+				<f:selectItem itemValue="SEPARADO(A)" itemLabel="SEPARADO(A)" />
+			</p:selectOneRadio>
 
-		<br />
+			<br />
 
-		<p:commandButton value="Enviar" actionListener="#{bean.adicionar()}" action="crud.xhtml?faces-redirect=true">
-		</p:commandButton>
+			<p:commandButton value="Enviar" actionListener="#{bean.adicionar()}"
+				action="crud.xhtml?faces-redirect=true">
+			</p:commandButton>
+		</p:panel>
 	</h:form>
 
 	<br />
 	<h:form id="listaClientes">
-		<p:dataTable value="#{bean.clientes}" var="cliente" id="tabelaClientes">
+		<p:dataTable value="#{bean.clientes}" var="cliente"
+			id="tabelaClientes">
 			<p:column>
 				<f:facet name="header">Id</f:facet>
 				<p:outputLabel value="#{cliente.id}" />
@@ -77,14 +95,12 @@
 			<p:column>
 
 				<p:commandButton value="Atualizar"
-					action="#{bean.updatePage(cliente)}" 
-					style="color: blue">
+					action="#{bean.updatePage(cliente)}" style="color: blue">
 				</p:commandButton>
 			</p:column>
 			<p:column>
 				<p:commandButton value="Excluir" action="#{bean.delete(cliente.id)}"
-					update="tabelaClientes"
-					style="color: red">
+					update="tabelaClientes" style="color: red">
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>
