@@ -1,6 +1,7 @@
 package com.example.crudproject.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,8 +22,8 @@ public class Cliente implements Serializable {
 	private String nome;
 
 	@Column(nullable = false)
-	private String data; // Mudar pata tipo Date
-
+	private Date data;
+	
 	@Column(nullable = false)
 	private Double valor;
 
@@ -32,7 +33,6 @@ public class Cliente implements Serializable {
 	@Column(nullable = false)
 	private String estadoCivil;
 
-//	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	public Cliente(){}
 	
@@ -52,11 +52,11 @@ public class Cliente implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 

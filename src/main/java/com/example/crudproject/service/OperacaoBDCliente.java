@@ -27,8 +27,6 @@ public class OperacaoBDCliente {
 		Cliente cliente = new Cliente();
 		cliente.setId(id);
 		entityManager.remove(entityManager.merge(cliente));
-		
-//		return "crud.xhtml?faces-redirect=true";
 	}
 	
 	public String update(Cliente cliente) {

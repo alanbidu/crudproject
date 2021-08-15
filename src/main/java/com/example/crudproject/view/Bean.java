@@ -24,7 +24,6 @@ public class Bean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-//		System.out.println("Construiu");
 		clientes = operacaoBDCliente.list();
 	}
 
@@ -32,15 +31,7 @@ public class Bean implements Serializable {
 		operacaoBDCliente.create(cliente);
 		clientes.add(cliente);
 		cliente = new Cliente();
-//		return "crud.xhtml";
 	}
-
-//	public void atualizarClientes() {
-//		clientes = operacaoBDCliente.list();
-//		for (int i = 0; i < clientes.size(); i++) {
-//			System.out.println(clientes.get(i).getNome());
-//		}
-//	}
 
 	public String updatePage(Cliente cliente) {
 		this.cliente = cliente;
@@ -55,16 +46,14 @@ public class Bean implements Serializable {
 	}
 
 	public void delete(Long id) {
-//		String crudDel = operacaoBDCliente.delete(id);
 		operacaoBDCliente.delete(id);
 		clientes = operacaoBDCliente.list();
-//		return crudDel;
 	}
 
 	public Cliente getCliente() {
 		return cliente;
 	}
-
+	
 	public List<Cliente> getClientes() {
 		return clientes;
 	}

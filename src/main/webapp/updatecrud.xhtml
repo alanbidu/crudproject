@@ -28,8 +28,11 @@
 			<br />
 
 			<p:outputLabel for="data" value="Data(DD/MM/AAAA):" />
-			<p:inputText id="data" value="#{bean.cliente.data}" required="true"
-				requiredMessage="Data obrigatória" title="Data do cadastro" />
+<!-- 			<p:inputText id="data" value="#{bean.cliente.data}" required="true" -->
+<!-- 				requiredMessage="Data obrigatória" title="Data do cadastro" /> -->
+			<p:datePicker id="data" value="#{bean.cliente.data}" locale="br"
+				monthNavigator="true" pattern="dd/MM/yyyy" required="true"
+				requiredMessage="Data obrigatória" />
 
 			<br />
 
