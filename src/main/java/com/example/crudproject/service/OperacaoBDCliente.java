@@ -23,12 +23,12 @@ public class OperacaoBDCliente {
 		return entityManager.createQuery("FROM Cliente c", Cliente.class).getResultList();
 	}
 
-	public String delete(Long id) {
+	public void delete(Long id) {
 		Cliente cliente = new Cliente();
 		cliente.setId(id);
 		entityManager.remove(entityManager.merge(cliente));
 		
-		return "crud.xhtml?faces-redirect=true";
+//		return "crud.xhtml?faces-redirect=true";
 	}
 	
 	public String update(Cliente cliente) {

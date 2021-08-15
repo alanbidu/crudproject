@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">>
 <h:head>
 	<title>CRUD</title>
 </h:head>
@@ -9,40 +10,40 @@
 	<h1>CRUD</h1>
 	<h:form>
 
-		<h:outputLabel for="nome" value="Nome:" />
-		<h:inputText id="nome" value="#{bean.cliente.nome}" />
+		<p:outputLabel for="nome" value="Nome:" />
+		<p:inputText id="nome" value="#{bean.cliente.nome}" />
 
 		<br />
 
-		<h:outputLabel for="data" value="Data(DD/MM/AAAA):" />
-		<h:inputText id="data" value="#{bean.cliente.data}" />
+		<p:outputLabel for="data" value="Data(DD/MM/AAAA):" />
+		<p:inputText id="data" value="#{bean.cliente.data}" />
 
 		<br />
 
-		<h:outputLabel for="valor" value="Valor:" />
-		<h:inputText id="valor" value="#{bean.cliente.valor}" />
+		<p:outputLabel for="valor" value="Valor:" />
+		<p:inputText id="valor" value="#{bean.cliente.valor}" />
 
 		<br />
 
-		<h:outputLabel for="sexo" value="Sexo:" />
-		<h:selectOneRadio id="sexo" value="#{bean.cliente.sexo}">
+		<p:outputLabel for="sexo" value="Sexo:" />
+		<p:selectOneRadio id="sexo" value="#{bean.cliente.sexo}">
 			<f:selectItem itemValue="MASCULINO" itemLabel="MASCULINO" />
 			<f:selectItem itemValue="FEMININO" itemLabel="FEMININO" />
-		</h:selectOneRadio>
+		</p:selectOneRadio>
 
 
-		<h:outputLabel for="estadoCivil" value="Estado Civil:" />
-		<h:selectOneRadio id="estadoCivil" value="#{bean.cliente.estadoCivil}">
+		<p:outputLabel for="estadoCivil" value="Estado Civil:" />
+		<p:selectOneRadio id="estadoCivil" value="#{bean.cliente.estadoCivil}">
 			<f:selectItem itemValue="SOLTEIRO(A)" itemLabel="SOLTEIRO(A)" />
 			<f:selectItem itemValue="CASADO(A)" itemLabel="CASADO(A)" />
 			<f:selectItem itemValue="VIUVO(A)" itemLabel="VIUVO(A)" />
 			<f:selectItem itemValue="SEPARADO(A)" itemLabel="SEPARADO(A)" />
-		</h:selectOneRadio>
+		</p:selectOneRadio>
 
 		<br />
 		
-		<h:commandButton value="Atualizar" action="#{bean.update()}">
-		</h:commandButton>
+		<p:commandButton value="Atualizar" action="#{bean.update()}">
+		</p:commandButton>
 	</h:form>
 
 

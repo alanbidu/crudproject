@@ -28,19 +28,19 @@ public class Bean implements Serializable {
 		clientes = operacaoBDCliente.list();
 	}
 
-	public String adicionar() {
+	public void adicionar() {
 		operacaoBDCliente.create(cliente);
 		clientes.add(cliente);
 		cliente = new Cliente();
-		return "crud.xhtml";
+//		return "crud.xhtml";
 	}
 
-	public void atualizarClientes() {
-		clientes = operacaoBDCliente.list();
+//	public void atualizarClientes() {
+//		clientes = operacaoBDCliente.list();
 //		for (int i = 0; i < clientes.size(); i++) {
 //			System.out.println(clientes.get(i).getNome());
 //		}
-	}
+//	}
 
 	public String updatePage(Cliente cliente) {
 		this.cliente = cliente;
@@ -54,10 +54,11 @@ public class Bean implements Serializable {
 		return crudPag;
 	}
 
-	public String delete(Long id) {
-		String crudDel = operacaoBDCliente.delete(id);;
+	public void delete(Long id) {
+//		String crudDel = operacaoBDCliente.delete(id);
+		operacaoBDCliente.delete(id);
 		clientes = operacaoBDCliente.list();
-		return crudDel;
+//		return crudDel;
 	}
 
 	public Cliente getCliente() {
