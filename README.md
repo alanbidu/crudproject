@@ -1,2 +1,2 @@
 # crudproject
-CRUD using JSF, Wildfly and MySQL
+CRUD usando JSF, Wildfly e MySQL
