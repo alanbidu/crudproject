@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.example.crudproject.Cliente;
+import com.example.crudproject.model.Cliente;
 
 @Stateless
 public class OperacaoBDCliente {

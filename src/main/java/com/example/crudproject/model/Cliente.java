@@ -1,4 +1,4 @@
-package com.example.crudproject;
+package com.example.crudproject.model;
 
 import java.io.Serializable;
 

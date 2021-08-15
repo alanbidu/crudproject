@@ -8,7 +8,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.example.crudproject.Cliente;
+import com.example.crudproject.model.Cliente;
 import com.example.crudproject.service.OperacaoBDCliente;
 
 @Named
